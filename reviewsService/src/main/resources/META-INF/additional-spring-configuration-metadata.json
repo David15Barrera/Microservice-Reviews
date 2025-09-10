@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "client.services.auth-identity",
+      "type": "java.lang.String"
+    }
+  ]
+}
