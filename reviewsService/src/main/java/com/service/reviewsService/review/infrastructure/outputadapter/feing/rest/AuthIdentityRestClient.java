@@ -9,6 +9,6 @@ import java.util.List;
 @FeignClient(name = "auth-identity", url = "${client.services.auth-identity}/api/auth-identity")
 public interface AuthIdentityRestClient {
 
-    @GetMapping("/v1/customers")
+    @GetMapping("/api/v1/customers")
     List<CustomerResponseDto> findAllCustomers();
 }

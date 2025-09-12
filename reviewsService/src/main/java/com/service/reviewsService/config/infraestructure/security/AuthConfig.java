@@ -55,7 +55,7 @@ public class AuthConfig {
                                 "/api/orders/**",
                                 "/api/dishes/**",
                                 "/api/order-details/**",
-                                "/v1/reviews").permitAll()
+                                "/v1/reviews/**").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwtCustomizer -> jwtCustomizer
