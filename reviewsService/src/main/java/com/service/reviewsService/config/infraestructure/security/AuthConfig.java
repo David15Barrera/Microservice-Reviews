@@ -45,8 +45,7 @@ public class AuthConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtDecoder jwtDecoder) throws Exception {
         return httpSecurity
-//                .cors(c -> c.disable())
-                .cors(Customizer.withDefaults())
+                .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .csrf(c -> c.disable())
                 .sessionManagement(s -> s.sessionCreationPolicy(STATELESS))
                 .authorizeHttpRequests(a -> a
@@ -55,7 +54,9 @@ public class AuthConfig {
                                 "/api/orders/**",
                                 "/api/dishes/**",
                                 "/api/order-details/**",
-                                "/v1/reviews/**").permitAll()
+                                "/v1/reviews",
+                                "/v1/reviews/**"
+                        ).permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwtCustomizer -> jwtCustomizer
