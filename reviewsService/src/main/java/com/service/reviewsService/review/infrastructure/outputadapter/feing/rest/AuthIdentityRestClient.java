@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "auth-identity", url = "${client.services.auth-identity}/api/auth-identity")
+@FeignClient(name = "auth-identity", url = "https://microservice-authemploye.onrender.com/api/auth-identity")
 public interface AuthIdentityRestClient {
 
     @GetMapping("/api/v1/customers")
