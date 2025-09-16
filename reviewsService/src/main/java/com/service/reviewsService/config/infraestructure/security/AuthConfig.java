@@ -34,7 +34,10 @@ public class AuthConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); // Reemplaza con el dominio de tu front-end
+        configuration.setAllowedOriginPatterns(Arrays.asList(
+                "http://localhost:4200",
+                "https://*.vercel.app"
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -55,7 +58,10 @@ public class AuthConfig {
                                 "/api/dishes/**",
                                 "/api/order-details/**",
                                 "/v1/reviews",
-                                "/v1/reviews/**"
+                                "/v1/reviews/room/**",
+                                "/v1/reviews/restaurant/**",
+                                "/v1/reviews/hotel/**",
+                                "/v1/reviews/dishes/**"
                         ).permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
